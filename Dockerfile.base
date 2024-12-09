@@ -1,0 +1,30 @@
+# Base Flink Docker Image
+FROM openjdk:11-slim
+
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    wget \
+    bash \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set Flink version
+ENV FLINK_VERSION=1.15.2
+ENV HADOOP_VERSION=3
+ENV SCALA_VERSION=2.12
+
+# Download and install Flink
+WORKDIR /opt
+RUN wget https://downloads.apache.org/flink/flink-${FLINK_VERSION}/flink-${FLINK_VERSION}-bin-scala_${SCALA_VERSION}.tgz \
+    && tar -xzf flink-${FLINK_VERSION}-bin-scala_${SCALA_VERSION}.tgz \
+    && mv flink-${FLINK_VERSION} flink \
+    && rm flink-${FLINK_VERSION}-bin-scala_${SCALA_VERSION}.tgz
+
+# Set up Flink environment
+ENV FLINK_HOME=/opt/flink
+ENV PATH=$PATH:$FLINK_HOME/bin
+
+# Expose ports for Flink services
+EXPOSE 6123 8081
+
+# Set working directory
+WORKDIR $FLINK_HOME
