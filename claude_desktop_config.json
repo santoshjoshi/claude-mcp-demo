@@ -1,0 +1,33 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "node",
+      "args": [
+        "C:\\Users\\HP\\AppData\\Roaming\\npm\\node_modules\\@modelcontextprotocol\\server-filesystem\\dist\\index.js",
+        "C:\\Users\\HP\\Downloads"
+      ],
+      "env": {
+        "DEBUG": "*"
+      }
+    },
+    "github": {
+      "command": "node",
+      "args": [
+        "C:\\Users\\HP\\AppData\\Roaming\\npm\\node_modules\\@modelcontextprotocol\\server-github\\dist\\index.js"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "<GITHUB_TOKEN>"
+      }
+    },
+    "brave-search": {
+      "command": "node",
+      "args": [
+        "C:\\Users\\HP\\AppData\\Roaming\\npm\\node_modules\\@modelcontextprotocol\\server-brave-search\\dist\\index.js"
+      ],
+      "env": {
+        "BRAVE_API_KEY": "<BRAVE_TOKEN>",
+        "DEBUG": "*"
+      }
+    }
+  }
+}
